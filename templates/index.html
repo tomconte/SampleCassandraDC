@@ -1,0 +1,30 @@
+<!doctype html>
+<head>
+  <title>Cassandra</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      font-size: 17px;
+    }
+  </style>
+</head>
+<body>
+<h1>Cassandra!</h1>
+
+<table border="1" width="50%">
+  <tr> 
+    <th>pk</th>
+    <th>t</th>
+    <th>s</th>
+    <th>v</th>
+  </tr>
+{% for row in rows %}
+  <tr> 
+    <td>{{ row.pk }}</td>
+    <td>{{ row.t }}</td>
+    <td>{{ row.s }}</td>
+    <td>{{ row.v }}</td>
+  </tr>
+{% endfor %}
+</table>
+</body>
