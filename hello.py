@@ -1,3 +1,4 @@
+import socket
 from flask import Flask
 from flask import render_template
 from cassandra.cluster import Cluster
@@ -11,10 +12,12 @@ cluster = Cluster(['10.1.1.11', '10.1.1.12', '10.1.1.13',
 
 session = cluster.connect('azuredcs')
 
+hostname = socket.gethostname()
+
 @app.route("/")
 def index():
   rows = session.execute('SELECT * FROM test')
-  return render_template('index.html', rows=rows)
+  return render_template('index.html', rows=rows, hostname=hostname)
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0')
